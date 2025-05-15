@@ -39,16 +39,20 @@ const links =[
 const Navbar = () => {
 
   return (
-    <div>
+    <div className='flex justify-around py-8 text-lg cursor-pointer'>
       <Link href="/">lamamia </Link>
 
-      <div className="">
+      <div className=" gap-5">
         {
           links.map(link =>(
-            <Link key={link.id} href={link.url}>{link.title}</Link>
+            
+            <Link className='gap-5 mr-4'
+             key={link.id} href={link.url}>{link.title}</Link>
           ))
         }
-         <button onClick={()=>console.log("Logged out")}>Logout</button>
+         <button onClick={()=>console.log("Logged out..")}
+          className='bg-primaryButton text-white w-24 h-8'
+          >Logout</button>
       </div>
      
     </div>
