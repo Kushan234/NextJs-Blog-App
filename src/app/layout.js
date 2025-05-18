@@ -2,6 +2,7 @@ import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
+import { ThemeProvider } from "../../context/ThemeContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,13 +24,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={inter.className}>
+      <body className="text-black transition-colors duration-300 bg-white dark:bg-black dark:text-white">
+      
+       <ThemeProvider>
       <div className="container">
       <Navbar />
         {children}
         <Footer />
       </div>
+      </ThemeProvider>
+      
       </body>
     </html>
   );
