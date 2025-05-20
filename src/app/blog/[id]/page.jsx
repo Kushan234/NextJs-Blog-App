@@ -2,20 +2,33 @@ import React from 'react'
 import Image from 'next/image' 
 import profile from '../../../../public/2.webp'
 import first from "../../../../public/blog.jpg";
+import { notFound } from 'next/navigation';
 
-const BlogPost   = () => {
+async function getData(id) {
+
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`,{
+    cache: 'no-store'}  // fetch fresh data on every fetch request
+);
+  
+  if(!res.ok){
+   return notFound();
+  }
+  
+  return res.json();
+  
+}
+
+const BlogPost = async ({params}) => {
+   
+  const data = await getData(params.id)
   return (
     <div className="px-40 ml-16">
       <div className="flex mt-20">
         <div className="w-[70%] text-left">
         
-        <h3 className='mb-5 text-xl font-bold'>Started frontend development by
-              implementing the login</h3>
+        <h3 className='mb-5 text-xl font-bold'>{data.title}</h3>
               
-              <p className='text-lg '>  Prepared detailed UI designs and UML diagrams to guide
-              development. Completed the database schema design and set up the
-              development environment. Started frontend development by
-              implementing the login page and the main interface</p>
+              <p className='text-lg '>{data.body}</p>
               
               <Image className='w-20 rounded-full mt-14' 
               src={profile} alt='profile'/>
