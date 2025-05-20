@@ -52,3 +52,6 @@ const Category = ({ params }) => {
 };
 
 export default Category;
+
+
+//mongodb+srv://nextjsblogapp:<db_password>@cluster0.ffuablw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
