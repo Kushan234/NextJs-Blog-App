@@ -1,9 +1,11 @@
 "use client"
 import Link from 'next/link'
 import React from 'react'
+import DarkModeToggle from '../DarkModeToggle/DarkModeToggle'
 
 const links =[
-  {
+ 
+    {
     id:  1,
     title: "Home",
     url: "/"
@@ -41,8 +43,9 @@ const Navbar = () => {
   return (
     <div className='flex justify-around py-8 text-lg cursor-pointer'>
       <Link href="/">lamamia </Link>
-
-      <div className=" gap-5">
+   
+      <div className="flex gap-3 ">
+       <DarkModeToggle />
         {
           links.map(link =>(
             
@@ -51,7 +54,7 @@ const Navbar = () => {
           ))
         }
          <button onClick={()=>console.log("Logged out..")}
-          className='bg-primaryButton text-white w-24 h-8'
+          className='w-24 h-8 text-white bg-primaryButton'
           >Logout</button>
       </div>
      
