@@ -2,7 +2,8 @@
 import React from 'react'
 import { FaMoon } from "react-icons/fa";
 import { IoSunnySharp } from "react-icons/io5";
-import { useTheme } from '../../../context/ThemeContext.js';
+import { useTheme } from '@/context/ThemeContext';
+
 
 const DarkModeToggle = () => {
     
