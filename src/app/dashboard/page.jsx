@@ -1,9 +1,13 @@
 'use client'
+import { useSession } from 'next-auth/react'
 import React, { useEffect, useState } from 'react'
 import useSWR from 'swr'
 
 const Dashboard = () => {
 
+      const session = useSession();
+      console.log(session);
+      
   // const [data,setData]= useState([]);
   // const [error, setIsError] = useState(false);
   // const [isLoading, setIsLoading] = useState(false);
@@ -27,6 +31,9 @@ const Dashboard = () => {
   //   }
   //   getData();
   // },[])
+
+
+
 
     const fetcher = (...args) => fetch(...args).then(res => res.json())
 

@@ -1,11 +1,11 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import blog from "../../../public/blog.jpg";
+
 
 async function getData() {
 
-  const res = await fetch("https://jsonplaceholder.typicode.com/posts",{
+  const res = await fetch("http://localhost:3000/api/posts",{
     cache: 'no-store'}  // fetch fresh data on every fetch request
 );
   
@@ -23,15 +23,18 @@ const Blog = async () => {
   return (
     <div className="px-40 ml-16">
      <div className="">
-      {data.map((item)=>(
-       <Link key={item.id} href="/blog/testId">
+      {data.map((item,index)=>(
+       <Link key={index} href={`/blog/${item._id}`}>
         <div  className="flex mt-10">
-          <Image className="w-96 h-60"
-           src={blog} alt="blog image" />
+          <Image
+           src={item.img}  
+          className="w-96 h-60"
+          width={400} height={250}
+          alt="blog image"  />
 
           <div className="mt-10 ml-5">
             <h3 className="mb-3 text-xl">{item.title}</h3>
-            <p>{item.body}</p>
+            <p>{item.desc}</p>
           </div>
         </div>
       </Link>

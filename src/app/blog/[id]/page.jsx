@@ -6,7 +6,7 @@ import { notFound } from 'next/navigation';
 
 async function getData(id) {
 
-  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`,{
+  const res = await fetch(`http://localhost:3000/api/posts/${id}`,{
     cache: 'no-store'}  // fetch fresh data on every fetch request
 );
   
@@ -18,6 +18,16 @@ async function getData(id) {
   
 }
 
+ export async function generateMetadata({params}){
+  
+   const post = await getData(params.id);
+   return{
+    title: post.title,
+    description: post.desc,
+   };
+ }
+
+ 
 const BlogPost = async ({params}) => {
    
   const data = await getData(params.id)
@@ -28,11 +38,11 @@ const BlogPost = async ({params}) => {
         
         <h3 className='mb-5 text-xl font-bold'>{data.title}</h3>
               
-              <p className='text-lg '>{data.body}</p>
+              <p className='text-lg '>{data.desc}</p>
               
               <Image className='w-20 rounded-full mt-14' 
               src={profile} alt='profile'/>
-              <p className='ml-20 -mt-10 text-lg'>Jhon Doe</p>
+              <p className='ml-20 -mt-10 text-lg'>{data.username}</p>
       </div>
       
       <div className="mr-16">
@@ -43,21 +53,7 @@ const BlogPost = async ({params}) => {
       </div>
       
        <div className="mt-10 mr-16 text-lg text-justify">
-        <p>Completed the database schema design and set up the
-              development environment. Started frontend development by
-              implementing the login page and the main interfaceCompleted the database schema design and set up the
-              development environment. Started frontend development by
-              implementing the login page and the main interfaceCompleted the database schema design and set up the
-              development environment.
-              <br /><br /> Started frontend development by
-              implementing the login page and the main interfaceCompleted the database schema design and set up the
-              development environment. Started frontend development by
-              implementing the login page and the main interfaceCompleted the database schema design and set up the
-              development environment. Started frontend development by
-              implementing the login page and the main interfaceCompleted the database schema design and set up the
-              development environment.
-              <br /> <br />  Started frontend development by
-              implementing the login page and the main interface</p>
+        <p>{data.content}</p>
       </div>
     </div>
   )
