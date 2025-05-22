@@ -1,8 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-const nextConfig = {
-  images: {
-    domains: ['www.biorbit.com'],
-  },
+module.exports = {
   darkMode: 'class',
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
@@ -19,5 +16,3 @@ const nextConfig = {
   },
   plugins: [],
 };
-
-module.exports = nextConfig;

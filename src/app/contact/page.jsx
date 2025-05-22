@@ -2,6 +2,12 @@ import React from 'react'
 import Image from 'next/image'
 import contactLogo from '../../../public/contactLogo.png'
 
+export const metadata = {
+  title: "Lama Dev Contact Page",
+  description: "Ihis is a Contact page",
+};
+
+
 const Contact = () => {
   return (
     <div className="px-40 ml-16">
