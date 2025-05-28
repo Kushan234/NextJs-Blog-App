@@ -47,7 +47,7 @@ const About = () => {
         </ul>
         
       <div className="mt-5 ">
-          <button className='w-48 bg-green-700 h-14'>Continue</button>
+          <button className='w-48 text-white bg-green-700 h-14'>Continue</button>
       </div>
         </div>
         
