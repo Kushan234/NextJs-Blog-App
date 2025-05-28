@@ -22,13 +22,13 @@ const Contact = () => {
 
           <div className="flex flex-col w-[88%]">
             
-            <input className='h-16 px-4 mt-20 border border-gray-400 rounded-md '
+            <input className='h-16 px-4 mt-20 bg-transparent border border-gray-400 rounded-md'
              type="text" name='Name' placeholder='Name'/>
              
-            <input className='h-16 px-4 mt-8 border border-gray-400 rounded-md '
+            <input className='h-16 px-4 mt-8 bg-transparent border border-gray-400 rounded-md'
              type="email" name="" id="" placeholder='Email'/>
              
-            <textarea className='h-40 px-4 py-2 mt-8 border border-gray-400 rounded-md'
+            <textarea className='h-40 px-4 py-2 mt-8 bg-transparent border border-gray-400 rounded-md'
              name="" id="" placeholder='Message'></textarea>
              
             <div className="mt-10">
