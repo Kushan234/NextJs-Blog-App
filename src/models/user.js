@@ -1,7 +1,8 @@
-import mongoose, { Schema } from 'mongoose'
+import mongoose from 'mongoose'
 
+const { Schema } = mongoose;
 
-const userSchema = new mongoose.Schema(
+const userSchema = new Schema(
     {
         name: {
             type: String,
@@ -19,7 +20,8 @@ const userSchema = new mongoose.Schema(
             type: String,
             require: true
         },
-    }
+    },
+    {timestamps: true}
 
 );
 
