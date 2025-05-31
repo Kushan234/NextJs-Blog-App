@@ -1,17 +1,17 @@
-import Post from "@/models/post.js";
-import connect from "@/utils/db.js";
+import Post from "@/models/post";
+import connect from "@/utils/db";
 import { NextResponse } from "next/server";
 
-export const GET = async (request, { params }) => {
+export const GET = async (request, {params}) => {
 
-    const { id }= params;
+   console.log("Params:", params);
+
+  const { id } = params;
   try {
-    await connect();
-    console.log("Params:", params);
+    await connect();   
 
-
-    const post1 = await Post.findById(id);
-    return new NextResponse(JSON.stringify(post1), { status: 200 });
+    const post = await Post.findById(id);
+    return new NextResponse(JSON.stringify(post), { status: 200 });
     
   } catch (err) {
     return new NextResponse("Database Error", { status: 500 });
