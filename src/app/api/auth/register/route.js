@@ -1,16 +1,19 @@
-import connect from "@/utils/db";
+ import connect from "@/utils/db";
 import { NextResponse } from "next/server";
-import bcrypt from "bcryptjs";
-import user from "@/models/user";
+import bcrypt from "bcrypt";
+import User from "@/models/user";
  
  export const POST = async (request) =>{
+
     const { name, email, password} = await request.json();
+    console.log(name, email, password);
+    
 
     await connect(); 
 
-     const hashedPassword = await bcrypt.hashed(password, 5);
+     const hashedPassword = await bcrypt.hash(password, 10);
 
-        const newUser  = new user({
+        const newUser  = new User({
             name,
             email,
             password: hashedPassword
@@ -29,4 +32,4 @@ import user from "@/models/user";
             status: 500,
         });        
     }
- }
+ } 
