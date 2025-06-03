@@ -12,24 +12,24 @@ const Register = () => {
     e.preventDefault();
     
     const name = e.target[0].value;
-    const email = e.target[0].value;
-    const password = e.target[0].value;
+    const email = e.target[1].value;
+     const password = e.target[2].value;
     
     try {
-      const res = await fetch('/api/auth/register', {
-        method: 'POST',
+      const res = await fetch("/api/auth/register", {
+        method:"POST",
         headers:{
-          contentType: 'application/json',
+         "Content-Type":"application/json",
         },
-        body:JSON.stringify({
+        body: JSON.stringify({
           name,
           email,
           password
-        })
+        }),
       });
       
       res.status === 201 && router.push('/dashboard/login?success=Account has been created successfully'); 
-    } catch (err) {
+    } catch (error) {
       setErr(true); 
     }
   }
@@ -46,20 +46,25 @@ const Register = () => {
           <input type="text" 
         placeholder='username'
         className='w-full p-2 px-4 bg-transparent border border-gray-400 rounded-md'
+        name='name'
         required/>
 
           <input type="email" 
         placeholder='email'
         className='w-full p-2 px-4 bg-transparent border border-gray-400 rounded-md'
+        name='email'
         required/>
 
           <input type="password" 
         placeholder='password'
         className='w-full p-2 px-4 bg-transparent border border-gray-400 rounded-md'
+        name='password'
         required/>
 
         <button className='text-white bg-green-700 w-[32rem] h-14'>Register</button>
       </form>
+     {err && <p className="mt-4 text-sm text-red-500">Something went wrong, please try again.</p>}
+
      <div className='py-10 ml-80'>
        <Link href='/dashboard/login'>Login with an existing account</Link>
      </div>
