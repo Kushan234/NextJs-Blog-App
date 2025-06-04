@@ -36,7 +36,7 @@ const Register = () => {
   
   return (
     <div className="px-40 ml-16">
-      <div className="mt-10">
+      <div className="mt-20">
         <h1 className='mb-10 text-2xl font-bold text-center'>Register</h1>
         
       <form
@@ -61,7 +61,7 @@ const Register = () => {
         name='password'
         required/>
 
-        <button className='text-white bg-green-700 w-[32rem] h-14'>Register</button>
+        <button className='text-white bg-green-700 w-[32rem] h-12 rounded-md'>Register</button>
       </form>
      {err && <p className="mt-4 text-sm text-red-500">Something went wrong, please try again.</p>}
 

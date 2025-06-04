@@ -1,10 +1,21 @@
 "use client";
 
 import React from "react";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
 
+  const session = useSession();
+  const router = useRouter();
+  
+  if(session.status === "loading"){
+    return <p>Loading...</p>
+  }
+
+  if(session.status === "authenticated"){
+  router?.push ('/dashboard');
+  }
     const handleSubmit = async (e) => {
     e.preventDefault();
     
@@ -17,7 +28,7 @@ const Login = () => {
   return (
 
      <div className="px-40 ml-16">
-      <div className="mt-10">
+      <div className="mt-20">
         <h1 className='mb-10 text-2xl font-bold text-center'>Login</h1>
         
       <form
@@ -37,10 +48,10 @@ const Login = () => {
         required/>
 
       
-       <button className='text-white bg-green-700 w-[32rem] h-14'>Login</button>
+       <button className='text-white bg-green-700 w-[32rem] h-12 rounded-md'>Login</button>
       </form>
       
-       <button className='text-white bg-green-700 w-[32rem] h-14'
+       <button className='text-white bg-red-400 w-[32rem] h-10 ml-80 mt-8 rounded-md' 
         onClick={() => signIn("google")}>
         Login With Google
       </button>
