@@ -32,9 +32,9 @@ const Blog = async () => {
           width={400} height={250}
           alt="blog image"  />
 
-          <div className="mt-10 ml-5">
-            <h3 className="mb-3 text-xl">{item.title}</h3>
-            <p>{item.desc}</p>
+          <div className="mt-10 ml-20">
+            <h3 className="mb-5 text-xl font-bold">{item.title}</h3>
+            <p className="text-xl text-justify">{item.desc}</p>
           </div>
         </div>
       </Link>

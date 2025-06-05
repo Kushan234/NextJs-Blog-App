@@ -44,21 +44,22 @@ const Navbar = () => {
   const session =useSession();
   return (
     <div className='flex justify-around py-8 text-lg cursor-pointer'>
-      <Link href="/">lamamia </Link>
+      <Link className='mt-2 text-xl font-extrabold text-green-700' 
+       href="/">lamamia </Link>
    
-      <div className="flex gap-3 ">
+      <div className="flex gap-3 mt-2">
        <DarkModeToggle />
         {
           links.map(link =>(
             
-            <Link className='gap-5 mr-4'
+            <Link className='gap-5 mt-2 mr-4'
              key={link.id} href={link.url}>{link.title}</Link>
           ))
         }
 
          {session.status === "authenticated" && (
          <button onClick={signOut}
-          className='w-24 h-8 text-white bg-primaryButton'
+          className='h-10 text-white bg-green-700 w-28'
           >Logout</button>
          )}
       </div>
