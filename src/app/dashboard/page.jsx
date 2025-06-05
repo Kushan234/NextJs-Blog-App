@@ -101,31 +101,39 @@ const Dashboard = () => {
   if(session.status === "authenticated"){
 
   return(
-    <div className="">
-      <div className="">
-
-        {isLoading ? "loading" : data?.map ((post)=>(
-        <div key={post._id} className="">
-          <Image src={post.img} alt="" width={200} height={100} />
-        <h2>{post.title}</h2>
-        <span onClick={()=>handleDelete(post._id)}>X</span>
+    <div className="grid grid-cols-2 ">
+     <div className="p-20 ml-2 w-[100%] ">
+       <div className="">
+        {
+        isLoading ? "loading" : data?.map ((post)=>(
+        <div key={post._id} className="flex justify-center gap-10 text-center">
+          
+          <Image className='justify-center h-40 mb-10 w-60 '
+           src={post.img} alt="" width={200} height={100} />
+        <h2 className='justify-center text-xl text-center mt-14 '>{post.title}</h2>
+        
+        <span className='justify-center text-2xl font-extrabold text-center text-red-700 cursor-pointer mt-14 '
+         onClick={()=>handleDelete(post._id)}>X</span>
       </div>
-
       ))}
        </div>
-      <form onSubmit={handleSubmit}>
-        <h2>Add New Posts</h2>
+     </div>
+     <div className="mt-10">
+        <h2 className='mb-5 text-2xl font-bold'>Add New Posts</h2>
+       <form className='grid mt-5'
+        onSubmit={handleSubmit}>
         <input type="text" placeholder='Title' 
-        className=''/>
+        className='w-[70%] border border-gray-600 mb-5 h-12 bg-transparent px-3 placeholder:text-md'/>
         <input type="text" placeholder='Desc' 
-        className=''/>
+        className='w-[70%] border border-gray-600 mb-5 h-12 bg-transparent px-3 placeholder:text-md'/>
         <input type="text" placeholder='Image' 
-        className=''/>
-        <textarea name="" id=""
-        placeholder='Content'>
+        className='w-[70%] border border-gray-600 mb-5 h-12 bg-transparent px-3 placeholder:text-md'/>
+        <textarea name="" id="" placeholder='Content'
+        className='w-[70%] border border-gray-600 mb-5 h-48 bg-transparent px-3 placeholder:text-md py-2'>
         </textarea> 
-        <button>Send</button>
+        <button className='w-[70%] text-white bg-green-700  h-12 rounded-md'>Send</button>
       </form>
+     </div>
     </div>
   )
   }
